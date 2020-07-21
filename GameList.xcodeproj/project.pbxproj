@@ -56,12 +56,9 @@
 		ACC14A1F24C73174000E0319 /* GameList */ = {
 			isa = PBXGroup;
 			children = (
-				ACC14A2024C73174000E0319 /* AppDelegate.swift */,
-				ACC14A2224C73174000E0319 /* SceneDelegate.swift */,
+				ACC14A3424C73349000E0319 /* Start */,
 				ACC14A2424C73174000E0319 /* ContentView.swift */,
-				ACC14A2624C73175000E0319 /* Assets.xcassets */,
-				ACC14A2B24C73175000E0319 /* LaunchScreen.storyboard */,
-				ACC14A2E24C73175000E0319 /* Info.plist */,
+				ACC14A3524C73356000E0319 /* Resources */,
 				ACC14A2824C73175000E0319 /* Preview Content */,
 			);
 			path = GameList;
@@ -73,6 +70,25 @@
 				ACC14A2924C73175000E0319 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ACC14A3424C73349000E0319 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				ACC14A2024C73174000E0319 /* AppDelegate.swift */,
+				ACC14A2224C73174000E0319 /* SceneDelegate.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		ACC14A3524C73356000E0319 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ACC14A2624C73175000E0319 /* Assets.xcassets */,
+				ACC14A2B24C73175000E0319 /* LaunchScreen.storyboard */,
+				ACC14A2E24C73175000E0319 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +304,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GameList/Preview Content\"";
 				DEVELOPMENT_TEAM = 976UR9TUC6;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GameList/Info.plist;
+				INFOPLIST_FILE = GameList/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +324,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GameList/Preview Content\"";
 				DEVELOPMENT_TEAM = 976UR9TUC6;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GameList/Info.plist;
+				INFOPLIST_FILE = GameList/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
