@@ -13,6 +13,8 @@
 		ACC14A2724C73175000E0319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACC14A2624C73175000E0319 /* Assets.xcassets */; };
 		ACC14A2A24C73175000E0319 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACC14A2924C73175000E0319 /* Preview Assets.xcassets */; };
 		ACC14A2D24C73175000E0319 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACC14A2B24C73175000E0319 /* LaunchScreen.storyboard */; };
+		ACC14A5E24C774BA000E0319 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC14A5D24C774BA000E0319 /* Game.swift */; };
+		ACC14A6324C77693000E0319 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC14A6224C77693000E0319 /* GameListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		ACC14A2924C73175000E0319 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ACC14A2C24C73175000E0319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACC14A2E24C73175000E0319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACC14A5D24C774BA000E0319 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		ACC14A6224C77693000E0319 /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		ACC14A1F24C73174000E0319 /* GameList */ = {
 			isa = PBXGroup;
 			children = (
+				ACC14A6024C7767A000E0319 /* Scenes */,
+				ACC14A5C24C774AD000E0319 /* Models */,
 				ACC14A3424C73349000E0319 /* Start */,
 				ACC14A2424C73174000E0319 /* ContentView.swift */,
 				ACC14A3524C73356000E0319 /* Resources */,
@@ -89,6 +95,30 @@
 				ACC14A2E24C73175000E0319 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		ACC14A5C24C774AD000E0319 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ACC14A5D24C774BA000E0319 /* Game.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ACC14A6024C7767A000E0319 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				ACC14A6124C77680000E0319 /* List */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		ACC14A6124C77680000E0319 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				ACC14A6224C77693000E0319 /* GameListView.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +194,9 @@
 			files = (
 				ACC14A2124C73174000E0319 /* AppDelegate.swift in Sources */,
 				ACC14A2324C73174000E0319 /* SceneDelegate.swift in Sources */,
+				ACC14A6324C77693000E0319 /* GameListView.swift in Sources */,
 				ACC14A2524C73174000E0319 /* ContentView.swift in Sources */,
+				ACC14A5E24C774BA000E0319 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.andrecocuroci.GameList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -332,7 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.andrecocuroci.GameList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
