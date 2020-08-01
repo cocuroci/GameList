@@ -1,20 +1,23 @@
 import Foundation
 
 struct Game: Identifiable {
-    let id = UUID()
+    let id: UUID
     let name: String
     let platform: Platform
     let releaseDate: Date
     let developers: String
+    let releaseDateFormatted: String?
     
-    var releaseDateFormatted: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.locale = Locale(identifier: "pt-BR")
-        return dateFormatter.string(from: releaseDate)
+    init(id: UUID, name: String, platform: Platform, releaseDate: Date, developers: String, releaseDateFormatted: String? = nil) {
+        self.id = id
+        self.name = name
+        self.platform = platform
+        self.releaseDate = releaseDate
+        self.developers = developers
+        self.releaseDateFormatted = releaseDateFormatted
     }
     
-    enum Platform {
+    enum Platform: String, CaseIterable  {
         case `switch`
         case ps4
         case pc
