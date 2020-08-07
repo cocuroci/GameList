@@ -2,7 +2,7 @@
 //  CDGame+CoreDataClass.swift
 //  GameList
 //
-//  Created by André Martins on 28/07/20.
+//  Created by André Martins on 07/08/20.
 //  Copyright © 2020 André Cocuroci. All rights reserved.
 //
 //

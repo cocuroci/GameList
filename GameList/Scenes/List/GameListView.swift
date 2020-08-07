@@ -8,9 +8,12 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 16) {
-                if viewModel.games.count > 0 {
-                    List {
+            VStack {
+                List {
+                    Toggle(isOn: $viewModel.filterDone) {
+                        Text("Somente concluídos")
+                    }
+                    if !viewModel.games.isEmpty {
                         ForEach(viewModel.games) { game in
                             GameListCell(
                                 name: game.name,
@@ -21,13 +24,10 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
                         }.onDelete { indexSet in
                             self.viewModel.remove(at: indexSet)
                         }
+                    } else {
+                        Text("Não existe jogos cadastrados.")
                     }
-                } else {
-                    Text("Não existe jogos cadastrados")
-                    Button("Adicionar jogo") {
-                        self.showAddGameView = true
-                    }
-                }
+                }.id(UUID()) //remove animation
             }
             .navigationBarTitle("Meus jogos")
             .navigationBarItems(trailing:

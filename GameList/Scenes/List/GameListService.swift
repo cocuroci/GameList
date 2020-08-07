@@ -6,6 +6,7 @@ protocol GameListServicing {
     func add(game: Game)
     func delete(game: Game)
     func fetch() -> AnyPublisher<[Game], Never>
+    func filter(isDone: Bool)
 }
 
 final class GameListService: GameListServicing {
@@ -24,6 +25,10 @@ final class GameListService: GameListServicing {
     }
     
     func fetch() -> AnyPublisher<[Game], Never> {
-        operations.fetchedGames
+        operations.fetch()
+    }
+    
+    func filter(isDone: Bool) {
+        operations.filter(isDone: isDone)
     }
 }

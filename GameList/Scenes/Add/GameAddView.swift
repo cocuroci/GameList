@@ -16,6 +16,7 @@ struct GameAddView<Model>: View where Model: GameAddViewModelInput {
     @State private var developer = ""
     @State private var releaseDate = Date()
     @State private var selectedPlatform: String?
+    @State private var done = false
     @Environment(\.presentationMode) var presentationMode
     
     private let platform = Game.Platform.allCases
@@ -33,6 +34,9 @@ struct GameAddView<Model>: View where Model: GameAddViewModelInput {
                     ForEach(platform, id: \.self) { (platform: Game.Platform?) in
                         Text(platform?.name ?? "").tag(platform?.name)
                     }
+                }
+                Toggle(isOn: $done) {
+                    Text("Concluído")
                 }
             }
             .navigationBarTitle("Adicionar", displayMode: .inline)
@@ -54,7 +58,7 @@ struct GameAddView<Model>: View where Model: GameAddViewModelInput {
     }
     
     private func saveGame() {
-        viewModel.addGame(with: name, plataform: selectedPlatform, releaseDate: releaseDate, developers: developer)
+        viewModel.addGame(with: name, plataform: selectedPlatform, releaseDate: releaseDate, developers: developer, done: done)
     }
     
     private func closeModal() {

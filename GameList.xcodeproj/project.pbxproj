@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		AC3E40BC24D08D8800CD735F /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC3E40BA24D08D8800CD735F /* Games.xcdatamodeld */; };
 		AC3E40BE24D08DC800CD735F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3E40BD24D08DC800CD735F /* CoreDataContainer.swift */; };
-		AC3E40C124D0945B00CD735F /* CDGame+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3E40BF24D0945B00CD735F /* CDGame+CoreDataClass.swift */; };
-		AC3E40C224D0945B00CD735F /* CDGame+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3E40C024D0945B00CD735F /* CDGame+CoreDataProperties.swift */; };
 		AC3E40C424D098E200CD735F /* GameListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3E40C324D098E200CD735F /* GameListService.swift */; };
 		AC3E40C624D09E4700CD735F /* CDGame+WrappedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3E40C524D09E4700CD735F /* CDGame+WrappedValues.swift */; };
+		AC445C0724DDCBA9008582FA /* CDGame+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC445C0524DDCBA9008582FA /* CDGame+CoreDataClass.swift */; };
+		AC445C0824DDCBA9008582FA /* CDGame+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC445C0624DDCBA9008582FA /* CDGame+CoreDataProperties.swift */; };
 		ACBC628324D3557D009DB974 /* GameListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC628224D3557D009DB974 /* GameListRequest.swift */; };
 		ACBC629F24D45BA6009DB974 /* GameOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC629E24D45BA6009DB974 /* GameOperations.swift */; };
 		ACBC62BD24D4A4FC009DB974 /* GameAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC62BC24D4A4FC009DB974 /* GameAddService.swift */; };
@@ -34,10 +34,10 @@
 /* Begin PBXFileReference section */
 		AC3E40BB24D08D8800CD735F /* Games.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Games.xcdatamodel; sourceTree = "<group>"; };
 		AC3E40BD24D08DC800CD735F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
-		AC3E40BF24D0945B00CD735F /* CDGame+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGame+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AC3E40C024D0945B00CD735F /* CDGame+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGame+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC3E40C324D098E200CD735F /* GameListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListService.swift; sourceTree = "<group>"; };
 		AC3E40C524D09E4700CD735F /* CDGame+WrappedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGame+WrappedValues.swift"; sourceTree = "<group>"; };
+		AC445C0524DDCBA9008582FA /* CDGame+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGame+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AC445C0624DDCBA9008582FA /* CDGame+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGame+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACBC628224D3557D009DB974 /* GameListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListRequest.swift; sourceTree = "<group>"; };
 		ACBC629E24D45BA6009DB974 /* GameOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOperations.swift; sourceTree = "<group>"; };
 		ACBC62BC24D4A4FC009DB974 /* GameAddService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAddService.swift; sourceTree = "<group>"; };
@@ -72,8 +72,8 @@
 		AC3E40B924D08D6800CD735F /* Coredata */ = {
 			isa = PBXGroup;
 			children = (
-				AC3E40BF24D0945B00CD735F /* CDGame+CoreDataClass.swift */,
-				AC3E40C024D0945B00CD735F /* CDGame+CoreDataProperties.swift */,
+				AC445C0524DDCBA9008582FA /* CDGame+CoreDataClass.swift */,
+				AC445C0624DDCBA9008582FA /* CDGame+CoreDataProperties.swift */,
 				AC3E40C524D09E4700CD735F /* CDGame+WrappedValues.swift */,
 				AC3E40BA24D08D8800CD735F /* Games.xcdatamodeld */,
 				AC3E40BD24D08DC800CD735F /* CoreDataContainer.swift */,
@@ -250,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3E40C124D0945B00CD735F /* CDGame+CoreDataClass.swift in Sources */,
 				ACC14A2124C73174000E0319 /* AppDelegate.swift in Sources */,
 				ACC14A2324C73174000E0319 /* SceneDelegate.swift in Sources */,
 				ACBC62BD24D4A4FC009DB974 /* GameAddService.swift in Sources */,
@@ -260,10 +259,11 @@
 				ACBC62BF24D4A5C3009DB974 /* GameAddViewModel.swift in Sources */,
 				ACC14A6324C77693000E0319 /* GameListView.swift in Sources */,
 				AC3E40BE24D08DC800CD735F /* CoreDataContainer.swift in Sources */,
+				AC445C0824DDCBA9008582FA /* CDGame+CoreDataProperties.swift in Sources */,
 				ACBC628324D3557D009DB974 /* GameListRequest.swift in Sources */,
-				AC3E40C224D0945B00CD735F /* CDGame+CoreDataProperties.swift in Sources */,
 				ACC14A5E24C774BA000E0319 /* Game.swift in Sources */,
 				ACBC62C324D4A876009DB974 /* GameListFactory.swift in Sources */,
+				AC445C0724DDCBA9008582FA /* CDGame+CoreDataClass.swift in Sources */,
 				ACFBA48624CF7BED00D45C2B /* GameAddView.swift in Sources */,
 				AC3E40BC24D08D8800CD735F /* Games.xcdatamodeld in Sources */,
 				ACBC62C124D4A6B4009DB974 /* GameAddFactory.swift in Sources */,

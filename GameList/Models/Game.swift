@@ -7,14 +7,16 @@ struct Game: Identifiable {
     let releaseDate: Date
     let developers: String
     let releaseDateFormatted: String?
+    let done: Bool
     
-    init(id: UUID, name: String, platform: Platform, releaseDate: Date, developers: String, releaseDateFormatted: String? = nil) {
+    init(id: UUID, name: String, platform: Platform, releaseDate: Date, developers: String, releaseDateFormatted: String? = nil, done: Bool) {
         self.id = id
         self.name = name
         self.platform = platform
         self.releaseDate = releaseDate
         self.developers = developers
         self.releaseDateFormatted = releaseDateFormatted
+        self.done = done
     }
     
     enum Platform: String, CaseIterable  {

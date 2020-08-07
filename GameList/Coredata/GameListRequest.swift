@@ -13,6 +13,12 @@ final class GameListRequest: NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        return dateFormatter
+    }()
+    
     init(request: NSFetchRequest<CDGame>, context: NSManagedObjectContext) {
         self.context = context
         self.request = request
@@ -20,7 +26,7 @@ final class GameListRequest: NSObject, NSFetchedResultsControllerDelegate {
             fetchRequest: request,
             managedObjectContext: context,
             sectionNameKeyPath: nil,
-            cacheName: "\(String(describing: CDGame.self))"
+            cacheName: nil
         )
         super.init()
         performFetch()
@@ -31,7 +37,7 @@ final class GameListRequest: NSObject, NSFetchedResultsControllerDelegate {
             fetchRequest: request,
             managedObjectContext: context,
             sectionNameKeyPath: nil,
-            cacheName: "\(String(describing: CDGame.self))"
+            cacheName: nil
         )
         
         performFetch()
@@ -54,7 +60,9 @@ final class GameListRequest: NSObject, NSFetchedResultsControllerDelegate {
                 name: object.nameWrapped,
                 platform: object.platformWrapped,
                 releaseDate: object.releaseDateWrapped,
-                developers: object.developersWrapped
+                developers: object.developersWrapped,
+                releaseDateFormatted: self.dateFormatter.string(from: object.releaseDateWrapped),
+                done: object.done
             )
         } ?? []
         

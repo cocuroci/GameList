@@ -6,16 +6,9 @@ final class GameOperations {
     private let context: NSManagedObjectContext
     private let gameListing: GameListRequest
     
-    private(set) var fetchedGames: AnyPublisher<[Game], Never>
-    
     init(context: NSManagedObjectContext) {
         self.context = context
-        
-        let request: NSFetchRequest = CDGame.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: false)]
-        
-        self.gameListing = GameListRequest(request: request, context: context)
-        self.fetchedGames = gameListing.resultFetched.eraseToAnyPublisher()
+        self.gameListing = GameListRequest(request: GameOperations.defaultRequest(), context: context)
     }
     
     func add(game: Game) {
@@ -25,6 +18,7 @@ final class GameOperations {
         newGame.developers = game.developers
         newGame.releaseDate = game.releaseDate
         newGame.platform = game.platform.name
+        newGame.done = game.done
         saveContext()
     }
     
@@ -41,6 +35,27 @@ final class GameOperations {
         } catch {
             debugPrint(self, error)
         }
+    }
+    
+    func fetch() -> AnyPublisher<[Game], Never> {
+        gameListing.resultFetched.eraseToAnyPublisher()
+    }
+    
+    func filter(isDone: Bool) {
+        let request = GameOperations.defaultRequest()
+        if isDone {
+            request.predicate = NSPredicate(format: "done == %@", NSNumber(booleanLiteral: isDone))
+        }
+        gameListing.request = request
+    }
+    
+    private static func defaultRequest() -> NSFetchRequest<CDGame> {
+        let request: NSFetchRequest = CDGame.fetchRequest()
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "done", ascending: true),
+            NSSortDescriptor(key: "releaseDate", ascending: false),
+        ]
+        return request
     }
     
     private func saveContext() {

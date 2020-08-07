@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 protocol GameAddViewModelInput: ObservableObject {
-    func addGame(with withName: String, plataform: String?, releaseDate: Date, developers: String)
+    func addGame(with withName: String, plataform: String?, releaseDate: Date, developers: String, done: Bool)
 }
 
 final class GameAddViewModel: GameAddViewModelInput {
@@ -12,7 +12,7 @@ final class GameAddViewModel: GameAddViewModelInput {
         self.service = service
     }
     
-    func addGame(with withName: String, plataform: String?, releaseDate: Date, developers: String) {
+    func addGame(with withName: String, plataform: String?, releaseDate: Date, developers: String, done: Bool) {
         guard
             !withName.isEmpty,
             !developers.isEmpty,
@@ -28,7 +28,8 @@ final class GameAddViewModel: GameAddViewModelInput {
                 name: withName,
                 platform: trasformedPlaftorm,
                 releaseDate: releaseDate,
-                developers: developers
+                developers: developers,
+                done: done
             )
         )
     }
