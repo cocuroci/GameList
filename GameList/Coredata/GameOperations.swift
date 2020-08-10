@@ -24,13 +24,28 @@ final class GameOperations {
     
     func delete(game: Game) {
         let request: NSFetchRequest = CDGame.fetchRequest()
-        request.predicate = NSPredicate(format: "id = %@", game.id.uuidString)
+        request.predicate = NSPredicate(format: "id == %@", game.id.uuidString)
         
         do {
             let result = try context.fetch(request)
             guard let resultGame = result.first else { return }
             
             context.delete(resultGame)
+            saveContext()
+        } catch {
+            debugPrint(self, error)
+        }
+    }
+    
+    func updateStatus(game: Game) {
+        let request: NSFetchRequest = CDGame.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", game.id.uuidString)
+        
+        do {
+            let result = try context.fetch(request)
+            guard let resultGame = result.first else { return }
+            
+            resultGame.done = !game.done
             saveContext()
         } catch {
             debugPrint(self, error)

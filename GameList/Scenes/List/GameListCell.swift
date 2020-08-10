@@ -5,16 +5,25 @@ struct GameListCell: View {
     let platform: String
     let developers: String
     let date: String
+    let done: Bool
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(name)
-                .font(.headline)
-            Text("\(platform) - \(developers)")
-                .font(.caption)
-            Text(date)
-                .font(.caption)
-        }
+        HStack {
+            VStack(alignment: .leading) {
+                Text(name)
+                    .font(.headline)
+                Text("\(platform) - \(developers)")
+                    .font(.caption)
+                Text(date)
+                    .font(.caption)
+            }.foregroundColor(done ? .gray : .black)
+            
+            Spacer()
+            
+            if done {
+                Image(systemName: "checkmark").foregroundColor(.gray)
+            }
+        }.background(Color.white)
     }
 }
 
@@ -24,7 +33,8 @@ struct GameListCell_Previews: PreviewProvider {
             name: "The Legend of Zelda: Breath of the Wild",
             platform: "Switch",
             developers: "Nintendo",
-            date: "03/03/2017"
+            date: "03/03/2017",
+            done: true
         )
     }
 }

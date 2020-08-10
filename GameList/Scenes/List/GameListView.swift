@@ -19,15 +19,18 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
                                 name: game.name,
                                 platform: game.platform.name,
                                 developers: game.developers,
-                                date: game.releaseDateFormatted ?? ""
-                            )
+                                date: game.releaseDateFormatted ?? "",
+                                done: game.done
+                            ).onTapGesture {
+                                self.viewModel.updateStatus(game: game)
+                            }
                         }.onDelete { indexSet in
                             self.viewModel.remove(at: indexSet)
                         }
                     } else {
                         Text("Não existe jogos cadastrados.")
                     }
-                }.id(UUID()) //remove animation
+                }
             }
             .navigationBarTitle("Meus jogos")
             .navigationBarItems(trailing:

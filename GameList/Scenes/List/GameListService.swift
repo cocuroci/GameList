@@ -7,6 +7,7 @@ protocol GameListServicing {
     func delete(game: Game)
     func fetch() -> AnyPublisher<[Game], Never>
     func filter(isDone: Bool)
+    func updateStatus(game: Game)
 }
 
 final class GameListService: GameListServicing {
@@ -30,5 +31,9 @@ final class GameListService: GameListServicing {
     
     func filter(isDone: Bool) {
         operations.filter(isDone: isDone)
+    }
+    
+    func updateStatus(game: Game) {
+        operations.updateStatus(game: game)
     }
 }

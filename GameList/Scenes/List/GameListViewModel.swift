@@ -5,6 +5,7 @@ protocol GameListViewModelInput: ObservableObject {
     var games: [Game] { get }
     var filterDone: Bool { get set }
     func remove(at indexSet: IndexSet)
+    func updateStatus(game: Game)
 }
 
 final class GameListViewModel: GameListViewModelInput {
@@ -28,5 +29,9 @@ final class GameListViewModel: GameListViewModelInput {
         for index in indexSet {
             service.delete(game: games.remove(at: index))
         }
+    }
+    
+    func updateStatus(game: Game) {
+        service.updateStatus(game: game)
     }
 }
