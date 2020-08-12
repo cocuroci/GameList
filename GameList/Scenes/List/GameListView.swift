@@ -5,6 +5,7 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
     
     @ObservedObject var viewModel: Model
     @State private var showAddGameView = false
+    @State private var showChangeGameStatusAlert = false
 
     var body: some View {
         NavigationView {
@@ -22,7 +23,9 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
                                 date: game.releaseDateFormatted ?? "",
                                 done: game.done
                             ).onTapGesture {
-                                self.viewModel.updateStatus(game: game)
+                                self.showChangeGameStatusAlert = true
+                            }.alert(isPresented: self.$showChangeGameStatusAlert) {
+                                self.showAlert(game: game)
                             }
                         }.onDelete { indexSet in
                             self.viewModel.remove(at: indexSet)
@@ -43,6 +46,20 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
         }.sheet(isPresented: $showAddGameView) {
             GameAddFactory.make()
         }
+    }
+    
+    func showAlert(game: Game) -> Alert {
+        let title = game.name
+        let message = "Alterar status para: \(game.done ? "Não finalizado" : "Finalizado")"
+        
+        return Alert(
+            title: Text(title),
+            message: Text(message),
+            primaryButton: .default(Text("Alterar"), action: {
+                self.viewModel.updateStatus(game: game)
+            }),
+            secondaryButton: .cancel()
+        )
     }
 }
 
