@@ -16,14 +16,14 @@ struct GameListCell: View {
                     .font(.caption)
                 Text(date)
                     .font(.caption)
-            }.foregroundColor(done ? .gray : .black)
+            }.foregroundColor(done ? .gray : .primary)
             
             Spacer()
             
             if done {
                 Image(systemName: "checkmark").foregroundColor(.gray)
             }
-        }.background(Color.white)
+        }.background(Color(UIColor.systemBackground))
     }
 }
 

@@ -35,12 +35,12 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
                     }
                 }
             }
-            .navigationBarTitle("Meus jogos")
+            .navigationBarTitle("Meus jogos", displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
                     self.showAddGameView = true
                 }) {
-                    Image(systemName: "plus")
+                    Image(systemName: "plus").font(.system(size: 24))
                 }
             )
         }.sheet(isPresented: $showAddGameView) {

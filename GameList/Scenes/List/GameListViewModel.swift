@@ -10,19 +10,19 @@ protocol GameListViewModelInput: ObservableObject {
 
 final class GameListViewModel: GameListViewModelInput {
     private let service: GameListServicing
+    private var cancellables: Set<AnyCancellable> = []
     
     @Published private(set) var games: [Game] = []
     @Published var filterDone = false
-    private var cancellables: Set<AnyCancellable> = []
     
     init(service: GameListServicing) {
         self.service = service
         
-        service.fetch().print()
+        service.fetch()
             .assign(to: \.games, on: self)
             .store(in: &cancellables)
         
-        $filterDone.print().sink(receiveValue: service.filter(isDone:)).store(in: &cancellables)
+        $filterDone.sink(receiveValue: service.filter(isDone:)).store(in: &cancellables)
     }
     
     func remove(at indexSet: IndexSet) {
