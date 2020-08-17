@@ -56,11 +56,13 @@ final class GameOperations {
         gameListing.resultFetched.eraseToAnyPublisher()
     }
     
-    func filter(isDone: Bool) {
+    func showDone(_ isDone: Bool) {
         let request = GameOperations.defaultRequest()
-        if isDone {
-            request.predicate = NSPredicate(format: "done == %@", NSNumber(booleanLiteral: isDone))
+        
+        if !isDone {
+            request.predicate = NSPredicate(format: "done == %@", NSNumber(booleanLiteral: false))
         }
+        
         gameListing.request = request
     }
     

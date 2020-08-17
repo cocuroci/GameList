@@ -13,7 +13,7 @@ final class GameListViewModel: GameListViewModelInput {
     private var cancellables: Set<AnyCancellable> = []
     
     @Published private(set) var games: [Game] = []
-    @Published var filterDone = false
+    @Published var filterDone = true
     
     init(service: GameListServicing) {
         self.service = service
@@ -22,7 +22,7 @@ final class GameListViewModel: GameListViewModelInput {
             .assign(to: \.games, on: self)
             .store(in: &cancellables)
         
-        $filterDone.sink(receiveValue: service.filter(isDone:)).store(in: &cancellables)
+        $filterDone.sink(receiveValue: service.showDone(_:)).store(in: &cancellables)
     }
     
     func remove(at indexSet: IndexSet) {

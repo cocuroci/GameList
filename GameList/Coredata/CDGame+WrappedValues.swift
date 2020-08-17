@@ -19,6 +19,6 @@ extension CDGame {
     }
     
     var platformWrapped: Game.Platform {
-        Game.Platform(rawValue: platform ?? "") ?? Game.Platform.switch
+        Game.Platform(rawValue: platform?.lowercased() ?? "") ?? Game.Platform.switch
     }
 }

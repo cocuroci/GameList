@@ -11,12 +11,6 @@ import CoreData
 
 struct GameAddView<Model>: View where Model: GameAddViewModelInput {
     @ObservedObject var viewModel: Model
-    
-    @State private var name = ""
-    @State private var developer = ""
-    @State private var releaseDate = Date()
-    @State private var selectedPlatform: String?
-    @State private var done = false
     @Environment(\.presentationMode) var presentationMode
     
     private let platform = Game.Platform.allCases
@@ -24,18 +18,18 @@ struct GameAddView<Model>: View where Model: GameAddViewModelInput {
     var body: some View {
         NavigationView {
             Form {
-                TextField("Nome", text: $name)
-                TextField("Desenvolvedora", text: $developer)
-                DatePicker(selection: $releaseDate, displayedComponents: .date) {
+                TextField("Nome", text: $viewModel.name)
+                TextField("Desenvolvedora", text: $viewModel.developers)
+                DatePicker(selection: $viewModel.releaseDate, displayedComponents: .date) {
                     Text("Data de lançamento")
                 }
-                Picker(selection: $selectedPlatform, label: Text("Plataforma")) {
+                Picker(selection: $viewModel.plataform, label: Text("Plataforma")) {
                     Text("Escolha").tag(String?.none)
                     ForEach(platform, id: \.self) { (platform: Game.Platform?) in
                         Text(platform?.name ?? "").tag(platform?.name)
                     }
                 }
-                Toggle(isOn: $done) {
+                Toggle(isOn: $viewModel.done) {
                     Text("Concluído")
                 }
             }
@@ -54,11 +48,11 @@ struct GameAddView<Model>: View where Model: GameAddViewModelInput {
         Button("Salvar") {
             self.saveGame()
             self.closeModal()
-        }
+        }.disabled(viewModel.formDisabled)
     }
     
     private func saveGame() {
-        viewModel.addGame(with: name, plataform: selectedPlatform, releaseDate: releaseDate, developers: developer, done: done)
+        viewModel.addGame()
     }
     
     private func closeModal() {

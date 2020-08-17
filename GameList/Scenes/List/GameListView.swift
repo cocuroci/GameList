@@ -12,7 +12,7 @@ struct GameListView<Model>: View where Model: GameListViewModelInput {
             VStack {
                 List {
                     Toggle(isOn: $viewModel.filterDone) {
-                        Text("Somente concluídos")
+                        Text("Mostrar concluídos")
                     }
                     if !viewModel.games.isEmpty {
                         ForEach(viewModel.games) { game in

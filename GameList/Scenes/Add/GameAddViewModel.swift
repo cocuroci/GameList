@@ -2,31 +2,47 @@ import SwiftUI
 import Combine
 
 protocol GameAddViewModelInput: ObservableObject {
-    func addGame(with withName: String, plataform: String?, releaseDate: Date, developers: String, done: Bool)
+    var name: String { get set }
+    var plataform: String? { get set }
+    var releaseDate: Date { get set }
+    var developers: String { get set }
+    var done: Bool { get set }
+    var formDisabled: Bool { get }
+    func addGame()
 }
 
 final class GameAddViewModel: GameAddViewModelInput {
     private let service: GameAddServicing
     
+    @Published var name = ""
+    @Published var plataform: String?
+    @Published var releaseDate = Date()
+    @Published var developers = ""
+    @Published var done = false
+    @Published var formDisabled = true
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     init(service: GameAddServicing) {
         self.service = service
+        
+        let nameValid = $name.map { !$0.isEmpty }
+        let plataformValid = $plataform.map { $0?.isEmpty == false }
+        let developersValid = $developers.map { !$0.isEmpty }
+        
+        Publishers.CombineLatest3(nameValid, plataformValid, developersValid).map {
+            !$0 || !$1 || !$2
+        }
+        .assign(to: \.formDisabled, on: self)
+        .store(in: &cancellables)
     }
     
-    func addGame(with withName: String, plataform: String?, releaseDate: Date, developers: String, done: Bool) {
-        guard
-            !withName.isEmpty,
-            !developers.isEmpty,
-            let plataform = plataform,
-            let trasformedPlaftorm = Game.Platform(rawValue: plataform.lowercased())
-            else {
-                return
-        }
-        
+    func addGame() {
         service.add(
             game: Game(
                 id: UUID(),
-                name: withName,
-                platform: trasformedPlaftorm,
+                name: name,
+                platform: Game.Platform(rawValue: plataform?.lowercased() ?? "") ?? Game.Platform.switch,
                 releaseDate: releaseDate,
                 developers: developers,
                 done: done
