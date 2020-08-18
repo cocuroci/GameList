@@ -52,6 +52,25 @@ final class GameOperations {
         }
     }
     
+    func update(game: Game) {
+        let request: NSFetchRequest = CDGame.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", game.id.uuidString)
+        
+        do {
+            let result = try context.fetch(request)
+            guard let resultGame = result.first else { return }
+            
+            resultGame.name = game.name
+            resultGame.developers = game.developers
+            resultGame.releaseDate = game.releaseDate
+            resultGame.platform = game.platform.name
+            resultGame.done = game.done
+            saveContext()
+        } catch {
+            debugPrint(self, error)
+        }
+    }
+    
     func fetch() -> AnyPublisher<[Game], Never> {
         gameListing.resultFetched.eraseToAnyPublisher()
     }

@@ -33,7 +33,7 @@ struct GameAddView<Model>: View where Model: GameAddViewModelInput {
                     Text("Concluído")
                 }
             }
-            .navigationBarTitle("Adicionar", displayMode: .inline)
+            .navigationBarTitle("Adicionar jogo", displayMode: .inline)
             .navigationBarItems(leading: cancelButton, trailing: saveButton)
         }
     }

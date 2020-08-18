@@ -23,7 +23,7 @@ struct GameListCell: View {
             if done {
                 Image(systemName: "checkmark").foregroundColor(.gray)
             }
-        }.background(Color(UIColor.systemBackground))
+        }
     }
 }
 
