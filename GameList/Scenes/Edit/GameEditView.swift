@@ -1,11 +1,3 @@
-//
-//  GameEditView.swift
-//  GameList
-//
-//  Created by André Martins on 17/08/20.
-//  Copyright © 2020 André Cocuroci. All rights reserved.
-//
-
 import SwiftUI
 
 struct GameEditView<Model>: View where Model: GameEditViewModelInput {
@@ -37,8 +29,8 @@ struct GameEditView<Model>: View where Model: GameEditViewModelInput {
     
     private var updateButton: some View {
         Button("Salvar") {
-            self.presentationMode.wrappedValue.dismiss()
             self.viewModel.update()
+            self.presentationMode.wrappedValue.dismiss()
         }.disabled(viewModel.formDisabled)
     }
 }

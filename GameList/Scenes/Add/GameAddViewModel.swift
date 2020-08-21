@@ -33,8 +33,12 @@ final class GameAddViewModel: GameAddViewModelInput {
         Publishers.CombineLatest3(nameValid, plataformValid, developersValid).map {
             !$0 || !$1 || !$2
         }
-        .assign(to: \.formDisabled, on: self)
+        .assignNoRetain(to: \.formDisabled, on: self)
         .store(in: &cancellables)
+    }
+    
+    deinit {
+        debugPrint(#function, self)
     }
     
     func addGame() {

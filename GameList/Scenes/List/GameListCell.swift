@@ -1,40 +1,24 @@
 import SwiftUI
 
 struct GameListCell: View {
-    let name: String
-    let platform: String
-    let developers: String
-    let date: String
-    let done: Bool
+    let game: Game
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(name)
+                Text(game.name)
                     .font(.headline)
-                Text("\(platform) - \(developers)")
+                Text("\(game.platform.name) - \(game.developers)")
                     .font(.caption)
-                Text(date)
+                Text(game.releaseDateFormatted ?? "")
                     .font(.caption)
-            }.foregroundColor(done ? .gray : .primary)
+            }.foregroundColor(game.done ? .gray : .primary)
             
             Spacer()
             
-            if done {
+            if game.done {
                 Image(systemName: "checkmark").foregroundColor(.gray)
             }
         }
-    }
-}
-
-struct GameListCell_Previews: PreviewProvider {
-    static var previews: some View {
-        GameListCell(
-            name: "The Legend of Zelda: Breath of the Wild",
-            platform: "Switch",
-            developers: "Nintendo",
-            date: "03/03/2017",
-            done: true
-        )
     }
 }

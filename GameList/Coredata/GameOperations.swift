@@ -2,7 +2,13 @@ import Foundation
 import CoreData
 import Combine
 
-final class GameOperations {
+protocol GameOperating {
+    func add(game: Game)
+    func delete(game: Game)
+    func update(game: Game)
+}
+
+final class GameOperations: GameOperating {
     private let context: NSManagedObjectContext
     private let gameListing: GameListRequest
     

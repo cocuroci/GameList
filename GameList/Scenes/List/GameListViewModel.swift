@@ -19,7 +19,7 @@ final class GameListViewModel: GameListViewModelInput {
         self.service = service
         
         service.fetch()
-            .assign(to: \.games, on: self)
+            .assignNoRetain(to: \.games, on: self)
             .store(in: &cancellables)
         
         $filterDone.sink(receiveValue: service.showDone(_:)).store(in: &cancellables)

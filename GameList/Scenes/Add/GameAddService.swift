@@ -14,4 +14,8 @@ final class GameAddService: GameAddServicing {
     func add(game: Game) {
         operations.add(game: game)
     }
+    
+    deinit {
+        debugPrint(#function, self)
+    }
 }

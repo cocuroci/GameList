@@ -12,9 +12,16 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var container: CoreDataContainer?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let gameList = GameListFactory.make()
+        let container = CoreDataContainer()
+        let context = container.context
+        
+        let gameList = GameListFactory.make(with: context)
+            .environment(\.managedObjectContext, context)
+        
+        self.container = container
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -25,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        CoreDataContainer.shared.saveContext()
+        container?.saveContext()
     }
 }
 

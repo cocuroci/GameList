@@ -3,11 +3,6 @@ import CoreData
 import Combine
 
 final class CoreDataContainer {
-    
-    static let shared = CoreDataContainer()
-    
-    private init() {}
-    
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Games")
         container.loadPersistentStores { description, error in

@@ -36,14 +36,19 @@ final class GameEditViewModel: GameEditViewModelInput {
         _done = Published(initialValue: game.done)
         
         let nameValid = $name.map { !$0.isEmpty }
-        let plataformValid = $plataform.print().map { $0?.isEmpty == false }
+        let plataformValid = $plataform.map { $0?.isEmpty == false }
         let developersValid = $developers.map { !$0.isEmpty }
         
         Publishers.CombineLatest3(nameValid, plataformValid, developersValid).map {
            !$0 || !$1 || !$2
         }
-        .assign(to: \.formDisabled, on: self)
+        .print()
+        .assignNoRetain(to: \.formDisabled, on: self)
         .store(in: &cancellables)
+    }
+    
+    deinit {
+        debugPrint(#function, self)
     }
     
     func update() {

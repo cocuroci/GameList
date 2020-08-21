@@ -3,7 +3,7 @@ import Foundation
 import Combine
 
 final class GameListRequest: NSObject, NSFetchedResultsControllerDelegate {
-    private let context: NSManagedObjectContext
+    private var context: NSManagedObjectContext
     private var controller: NSFetchedResultsController<CDGame>
     private(set) var resultFetched = CurrentValueSubject<[Game], Never>([])
     

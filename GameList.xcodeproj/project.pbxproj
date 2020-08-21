@@ -17,6 +17,8 @@
 		ACB4DCAB24EB13DF00FBA970 /* GameEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB4DCAA24EB13DF00FBA970 /* GameEditViewModel.swift */; };
 		ACB4DCAD24EB168700FBA970 /* GameEditFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB4DCAC24EB168700FBA970 /* GameEditFactory.swift */; };
 		ACB4DCAF24EB1DB500FBA970 /* GameEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB4DCAE24EB1DB500FBA970 /* GameEditService.swift */; };
+		ACB4DDAB24F05E5900FBA970 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB4DDAA24F05E5900FBA970 /* LazyView.swift */; };
+		ACB4DDAE24F07C4400FBA970 /* Publisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB4DDAD24F07C4400FBA970 /* Publisher+Extensions.swift */; };
 		ACBC628324D3557D009DB974 /* GameListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC628224D3557D009DB974 /* GameListRequest.swift */; };
 		ACBC629F24D45BA6009DB974 /* GameOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC629E24D45BA6009DB974 /* GameOperations.swift */; };
 		ACBC62BD24D4A4FC009DB974 /* GameAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC62BC24D4A4FC009DB974 /* GameAddService.swift */; };
@@ -46,6 +48,8 @@
 		ACB4DCAA24EB13DF00FBA970 /* GameEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEditViewModel.swift; sourceTree = "<group>"; };
 		ACB4DCAC24EB168700FBA970 /* GameEditFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEditFactory.swift; sourceTree = "<group>"; };
 		ACB4DCAE24EB1DB500FBA970 /* GameEditService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEditService.swift; sourceTree = "<group>"; };
+		ACB4DDAA24F05E5900FBA970 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		ACB4DDAD24F07C4400FBA970 /* Publisher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extensions.swift"; sourceTree = "<group>"; };
 		ACBC628224D3557D009DB974 /* GameListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListRequest.swift; sourceTree = "<group>"; };
 		ACBC629E24D45BA6009DB974 /* GameOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOperations.swift; sourceTree = "<group>"; };
 		ACBC62BC24D4A4FC009DB974 /* GameAddService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAddService.swift; sourceTree = "<group>"; };
@@ -102,6 +106,22 @@
 			path = Edit;
 			sourceTree = "<group>";
 		};
+		ACB4DDA924F05E4500FBA970 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ACB4DDAA24F05E5900FBA970 /* LazyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ACB4DDAC24F07C3300FBA970 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACB4DDAD24F07C4400FBA970 /* Publisher+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		ACC14A1424C73173000E0319 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +141,8 @@
 		ACC14A1F24C73174000E0319 /* GameList */ = {
 			isa = PBXGroup;
 			children = (
+				ACB4DDAC24F07C3300FBA970 /* Extensions */,
+				ACB4DDA924F05E4500FBA970 /* Views */,
 				AC3E40B924D08D6800CD735F /* Coredata */,
 				ACC14A6024C7767A000E0319 /* Scenes */,
 				ACC14A5C24C774AD000E0319 /* Models */,
@@ -282,6 +304,7 @@
 				AC3E40BE24D08DC800CD735F /* CoreDataContainer.swift in Sources */,
 				AC445C0824DDCBA9008582FA /* CDGame+CoreDataProperties.swift in Sources */,
 				ACBC628324D3557D009DB974 /* GameListRequest.swift in Sources */,
+				ACB4DDAB24F05E5900FBA970 /* LazyView.swift in Sources */,
 				ACC14A5E24C774BA000E0319 /* Game.swift in Sources */,
 				ACB4DCA924EB137F00FBA970 /* GameEditView.swift in Sources */,
 				ACBC62C324D4A876009DB974 /* GameListFactory.swift in Sources */,
@@ -293,6 +316,7 @@
 				AC3E40C624D09E4700CD735F /* CDGame+WrappedValues.swift in Sources */,
 				ACBC62DF24D4B503009DB974 /* GameListCell.swift in Sources */,
 				ACB4DCAF24EB1DB500FBA970 /* GameEditService.swift in Sources */,
+				ACB4DDAE24F07C4400FBA970 /* Publisher+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
